@@ -1,42 +1,89 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.app-shell {
+  min-height: 100vh;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.app-navbar {
+  background-color: #1b5e20;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.app-navbar-brand {
+  color: #f9a825 !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.app-navbar .navbar-toggler {
+  border-color: #f9a825;
+}
+
+/* Tailwind's `.collapse { visibility: collapse; }` conflicts with Bootstrap navbar. */
+.app-navbar .navbar-collapse,
+.app-navbar .navbar-collapse.collapse,
+.app-navbar .navbar-collapse.collapsing {
+  visibility: visible;
+}
+
+@media (max-width: 991.98px) {
+  .app-navbar .navbar-collapse {
+    margin-top: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.12);
   }
 }
 
-.card {
-  padding: 2em;
+.hero-section {
+  background: linear-gradient(120deg, #1b5e20, #2e7d32);
+  color: #faf7f0;
 }
 
-.read-the-docs {
-  color: #888;
+.nugget-card {
+  border: 0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 0.35rem 1rem rgba(0, 0, 0, 0.08);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  height: 100%;
+}
+
+.nugget-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.55rem 1.25rem rgba(0, 0, 0, 0.12);
+}
+
+.nugget-thumb {
+  height: 200px;
+  object-fit: cover;
+}
+
+.nugget-description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.admin-sidebar {
+  position: sticky;
+  top: 1rem;
+}
+
+.admin-sidebar .list-group-item.active {
+  background-color: #1b5e20;
+  border-color: #1b5e20;
+}
+
+@media (max-width: 991.98px) {
+  .admin-sidebar {
+    position: static;
+  }
+
+  .admin-sidebar .list-group {
+    flex-direction: row;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .admin-sidebar .list-group-item {
+    border-right-width: 1px !important;
+    border-bottom-width: 1px !important;
+  }
 }

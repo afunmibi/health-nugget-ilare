@@ -1,0 +1,44 @@
+
+> health-nugget-ilare@0.0.0 dev:full
+> concurrently "npm run api" "npm run dev"
+
+[0] 
+[0] > health-nugget-ilare@0.0.0 api
+[0] > json-server --watch db.json --port 3001
+[0] 
+[1] 
+[1] > health-nugget-ilare@0.0.0 dev
+[1] > vite
+[1] 
+[0] --watch/-w can be omitted, JSON Server 1+ watches for file changes by default
+[0] node:events:486
+[0]       throw er; // Unhandled 'error' event
+[0]       ^
+[0] 
+[0] Error: listen EADDRINUSE: address already in use :::3001
+[0]     at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+[0]     at listenInCluster (node:net:1997:12)
+[0]     at Server.listen (node:net:2102:7)
+[0]     at App.listen (file:///C:/xampp/htdocs/dashboard/health_nugget_ilare/health-nugget-ilare/node_modules/@tinyhttp/app/dist/app.js:323:58)
+[0]     at file:///C:/xampp/htdocs/dashboard/health_nugget_ilare/health-nugget-ilare/node_modules/json-server/lib/bin.js:132:5
+[0] Emitted 'error' event on Server instance at:
+[0]     at emitErrorNT (node:net:1976:8)
+[0]     at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+[0]   code: 'EADDRINUSE',
+[0]   errno: -4091,
+[0]   syscall: 'listen',
+[0]   address: '::',
+[0]   port: 3001
+[0] }
+[0] 
+[0] Node.js v24.11.0
+[0] npm run api exited with code 1
+[1] Port 5173 is in use, trying another one...
+[1] Port 5174 is in use, trying another one...
+[1] Port 5175 is in use, trying another one...
+[1] Port 5176 is in use, trying another one...
+[1] 
+[1]   [32m[1mVITE[22m v7.3.1[39m  [2mready in [0m[1m740[22m[2m[0m ms[22m
+[1] 
+[1]   [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5177[22m/[39m
+[1] [2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m

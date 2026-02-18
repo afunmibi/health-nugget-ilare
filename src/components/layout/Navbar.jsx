@@ -1,72 +1,53 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+
+const linkClass = ({ isActive }) =>
+  `nav-link fw-semibold ${isActive ? 'text-warning' : 'text-light'}`;
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#1B5E20' }}>
+    <nav className="navbar navbar-expand-lg navbar-dark app-navbar">
       <div className="container">
-        <Link 
-          className="navbar-brand" 
-          to="/"
-          style={{ 
-            fontFamily: '"Playfair Display", serif',
-            color: '#F9A825',
-            fontSize: '1.5rem',
-            fontWeight: 'bold'
-          }}
-        >
-          🩺 Health Nugget-Ilare
-        </Link>
-        
-        <button 
-          className="navbar-toggler" 
-          type="button" 
-          data-bs-toggle="collapse" 
+        <NavLink className="navbar-brand fw-bold app-navbar-brand" to="/">
+          Health Nugget Ilare
+        </NavLink>
+
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
-          style={{ borderColor: '#F9A825' }}
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon" style={{ filter: 'invert(1)' }}></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        
+
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav ms-auto gap-lg-2 align-items-lg-center">
             <li className="nav-item">
-              <NavLink 
-                className="nav-link" 
-                to="/"
-                style={{ color: '#FAF7F0' }}
-                activeStyle={{ color: '#F9A825', fontWeight: 'bold' }}
-              >
+              <NavLink className={linkClass} to="/" end>
                 Home
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink 
-                className="nav-link" 
-                to="/nuggets"
-                style={{ color: '#FAF7F0' }}
-                activeStyle={{ color: '#F9A825', fontWeight: 'bold' }}
-              >
+              <NavLink className={linkClass} to="/nuggets">
                 Nuggets
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink 
-                className="nav-link" 
-                to="/categories"
-                style={{ color: '#FAF7F0' }}
-                activeStyle={{ color: '#F9A825', fontWeight: 'bold' }}
-              >
+              <NavLink className={linkClass} to="/categories">
                 Categories
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink 
-                className="nav-link" 
-                to="/about"
-                style={{ color: '#FAF7F0' }}
-                activeStyle={{ color: '#F9A825', fontWeight: 'bold' }}
-              >
+              <NavLink className={linkClass} to="/about">
                 About
+              </NavLink>
+            </li>
+            <li className="nav-item mt-2 mt-lg-0">
+              <NavLink className="btn btn-warning btn-sm fw-semibold" to="/admin/login">
+                Admin Dashboard
               </NavLink>
             </li>
           </ul>

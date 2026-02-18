@@ -1,9 +1,5 @@
 const CategoryBadge = ({ category }) => {
-  return (
-    <span className="inline-block bg-forest/10 text-forest px-3 py-1 rounded-full text-sm font-semibold">
-      {category}
-    </span>
-  );
+  return <span className="badge rounded-pill text-bg-success-subtle text-success-emphasis">{category}</span>;
 };
 
 export default CategoryBadge;

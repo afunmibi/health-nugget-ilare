@@ -2,74 +2,39 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="bg-forest text-white py-5 mt-auto">
+    <footer className="py-5 mt-auto" style={{ backgroundColor: '#1B5E20', color: '#FAF7F0' }}>
       <div className="container">
-        <div className="row">
-          {/* Brand */}
-          <div className="col-md-4 mb-4">
-            <h4 
-              className="mb-3"
-              style={{ fontFamily: '"Playfair Display", serif', color: '#F9A825' }}
-            >
-              🩺 Health Nugget-Ilare
-            </h4>
-            <p className="text-cream/80">
+        <div className="row g-4">
+          <div className="col-md-4">
+            <h4 className="mb-3" style={{ color: '#F9A825' }}>Health Nugget Ilare</h4>
+            <p className="mb-0 opacity-75">
               Helping everyday people start better conversations with their doctors.
             </p>
           </div>
-          
-          {/* Quick Links */}
-          <div className="col-md-4 mb-4">
+
+          <div className="col-md-4">
             <h5 className="mb-3" style={{ color: '#F9A825' }}>Quick Links</h5>
-            <ul className="list-unstyled">
-              <li className="mb-2">
-                <Link to="/" className="text-cream/80 hover:text-gold text-decoration-none">
-                  Home
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link to="/nuggets" className="text-cream/80 hover:text-gold text-decoration-none">
-                  Health Nuggets
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link to="/categories" className="text-cream/80 hover:text-gold text-decoration-none">
-                  Categories
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link to="/about" className="text-cream/80 hover:text-gold text-decoration-none">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/disclaimer" className="text-cream/80 hover:text-gold text-decoration-none">
-                  Medical Disclaimer
-                </Link>
-              </li>
+            <ul className="list-unstyled mb-0 d-grid gap-2">
+              <li><Link to="/" className="link-light text-decoration-none">Home</Link></li>
+              <li><Link to="/nuggets" className="link-light text-decoration-none">Health Nuggets</Link></li>
+              <li><Link to="/categories" className="link-light text-decoration-none">Categories</Link></li>
+              <li><Link to="/about" className="link-light text-decoration-none">About</Link></li>
+              <li><Link to="/disclaimer" className="link-light text-decoration-none">Medical Disclaimer</Link></li>
             </ul>
           </div>
-          
-          {/* Disclaimer */}
-          <div className="col-md-4 mb-4">
+
+          <div className="col-md-4">
             <h5 className="mb-3" style={{ color: '#F9A825' }}>Important</h5>
-            <p className="text-cream/80 text-sm">
-              This platform provides general health education only. Always consult your 
-              healthcare provider for personal medical advice.
+            <p className="mb-0 opacity-75">
+              This platform provides general health education only. Always consult your healthcare provider for personal medical advice.
             </p>
           </div>
         </div>
-        
-        <hr className="border-cream/20 my-4" />
-        
-        <div className="text-center text-cream/60 text-sm">
-          <p className="mb-0">
-            © {new Date().getFullYear()} Health Nugget-Ilare. Built with love for community health literacy.
-          </p>
-          <p className="mb-0 mt-2">
-            <em>"Always talk to your doctor."</em>
-          </p>
-        </div>
+
+        <hr className="my-4" />
+        <p className="mb-0 small text-center opacity-75">
+          Copyright {new Date().getFullYear()} Health Nugget Ilare.
+        </p>
       </div>
     </footer>
   );

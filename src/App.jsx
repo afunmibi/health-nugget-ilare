@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import './App.css';
+import Footer from './components/layout/Footer';
+import Navbar from './components/layout/Navbar';
+import AboutPage from './pages/AboutPage';
+import AdminLoginPage from './pages/AdminLoginPage';
+import AdminPage from './pages/AdminPage';
+import CategoriesPage from './pages/CategoriesPage';
+import DisclaimerPage from './pages/DisclaimerPage';
+import HomePage from './pages/HomePage';
+import NuggetDetailsPage from './pages/NuggetDetailsPage';
+import NuggetsPage from './pages/NuggetsPage';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <BrowserRouter>
+      <div className="app-shell d-flex flex-column min-vh-100">
+        <Navbar />
+        <main className="flex-grow-1 py-4 py-md-5">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/nuggets" element={<NuggetsPage />} />
+            <Route path="/nuggets/:id" element={<NuggetDetailsPage />} />
+            <Route path="/categories" element={<CategoriesPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/disclaimer" element={<DisclaimerPage />} />
+            <Route path="/admin/login" element={<AdminLoginPage />} />
+            <Route path="/admin" element={<AdminPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </main>
+        <Footer />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

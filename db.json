@@ -1,0 +1,87 @@
+{
+  "nuggets": [
+    {
+      "id": 1,
+      "title": "Understanding Insulin Resistance",
+      "category": "Metabolic Health",
+      "type": "video",
+      "mediaUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "thumbnail": "/images/insulin-resistance.jpg",
+      "description": "If insulin resistance sounds scary, that is because it is. Most of us have it but are unaware. Watch how this condition leads to other chronic diseases.",
+      "fullText": "Insulin resistance is the first block that other chronic diseases build upon. You cannot be diabetic without first being insulin resistant. Understanding this condition is crucial for preventing type 2 diabetes and other metabolic disorders.",
+      "doctorNote": "Discuss this with your doctor. This is the best time to do so.",
+      "datePosted": "2026-02-17",
+      "author": "Brother Idowu Fatimileh",
+      "tags": ["insulin", "diabetes", "chronic disease"]
+    },
+    {
+      "id": 2,
+      "title": "How Food Becomes Disease",
+      "category": "Nutrition",
+      "type": "video",
+      "mediaUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "thumbnail": "/images/food-disease.jpg",
+      "description": "Almost every chronic health challenge, apart from inherited ones, has the food we eat as its root. Watch how food becomes the first step in acquiring disease.",
+      "fullText": "Watch what you eat, when you eat it, and how much of it you eat. The relationship between our diet and disease is stronger than most people realize. Small changes in eating habits can have profound effects on long-term health.",
+      "doctorNote": "Talk to your doctor about this video, you'll be glad you did.",
+      "datePosted": "2026-02-16",
+      "author": "Brother Idowu Fatimileh",
+      "tags": ["nutrition", "diet", "chronic disease", "food"]
+    },
+    {
+      "id": 3,
+      "title": "The Importance of Quality Sleep",
+      "category": "Rest & Sleep",
+      "type": "audio",
+      "mediaUrl": "https://example.com/audio/sleep-importance.mp3",
+      "thumbnail": "/images/sleep-health.jpg",
+      "description": "Sleep is not just rest—it's when your body heals and restores. Learn why sleep deprivation is linked to numerous health issues.",
+      "fullText": "During sleep, your body performs critical maintenance. Hormones are regulated, tissues are repaired, and memories are consolidated. Chronic sleep deprivation has been linked to heart disease, obesity, and weakened immunity.",
+      "doctorNote": "If you struggle with sleep, discuss sleep hygiene and potential sleep disorders with your healthcare provider.",
+      "datePosted": "2026-02-15",
+      "author": "Brother Idowu Fatimileh",
+      "tags": ["sleep", "rest", "recovery", "health"]
+    },
+    {
+      "id": 4,
+      "title": "Daily Walking Benefits",
+      "category": "Lifestyle",
+      "type": "text",
+      "mediaUrl": null,
+      "thumbnail": "/images/walking-exercise.jpg",
+      "description": "A simple 30-minute walk daily can transform your health. Here's what the research shows about this accessible exercise.",
+      "fullText": "Walking is perhaps the most underrated form of exercise. It requires no equipment, can be done anywhere, and provides cardiovascular benefits, improves mood, aids weight management, and strengthens bones. Start with just 10 minutes and build up gradually.",
+      "doctorNote": "Before starting any exercise routine, especially if you have existing health conditions, consult your doctor.",
+      "datePosted": "2026-02-14",
+      "author": "Brother Idowu Fatimileh",
+      "tags": ["exercise", "walking", "fitness", "lifestyle"]
+    },
+    {
+      "id": 5,
+      "title": "Managing Stress for Better Health",
+      "category": "Mental Wellness",
+      "type": "image",
+      "mediaUrl": "/images/stress-management.jpg",
+      "thumbnail": "/images/stress-management.jpg",
+      "description": "Chronic stress affects every system in your body. Visual guide to understanding stress and practical techniques to manage it.",
+      "fullText": "Stress triggers the release of cortisol and adrenaline. While helpful in short bursts, chronic elevation of these hormones damages blood vessels, suppresses immunity, and disrupts digestion. Simple breathing exercises, meditation, and regular physical activity can help regulate your stress response.",
+      "doctorNote": "Persistent stress or anxiety should be discussed with your doctor or a mental health professional.",
+      "datePosted": "2026-02-13",
+      "author": "Brother Idowu Fatimileh",
+      "tags": ["stress", "mental health", "wellness", "anxiety"]
+    }
+  ],
+  "categories": [
+    { "id": 1, "name": "Metabolic Health", "icon": "🩸", "slug": "metabolic-health" },
+    { "id": 2, "name": "Nutrition & Diet", "icon": "🥦", "slug": "nutrition" },
+    { "id": 3, "name": "Rest & Sleep", "icon": "😴", "slug": "rest-sleep" },
+    { "id": 4, "name": "Lifestyle", "icon": "🏃", "slug": "lifestyle" },
+    { "id": 5, "name": "Mental Wellness", "icon": "🧠", "slug": "mental-wellness" }
+  ],
+  "welcome": {
+    "message": "Good morning brothers, sisters and friends. This platform was created by a non-healthcare person for any regular person, to benefit from generally available information about health and wellness. The goal is to help you start better conversations with your doctors.",
+    "author": "Brother Idowu Fatimileh",
+    "createdDate": "2026-02-17",
+    "bio": "Brother Idowu Fatimileh is a passionate advocate for community health education. Though not a healthcare professional, he has dedicated himself to gathering and sharing valuable health information to help everyday people take charge of their wellness journey. His mission is simple: empower communities with knowledge that prompts meaningful discussions with healthcare providers."
+  }
+}

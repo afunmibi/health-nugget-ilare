@@ -87,6 +87,7 @@ const welcomeFormFromItem = (welcome) => ({
 });
 
 const AdminPage = () => {
+  const uploadBaseUrl = import.meta.env.VITE_UPLOAD_BASE_URL || 'http://localhost:3002';
   const [nuggets, setNuggets] = useState([]);
   const [categories, setCategories] = useState([]);
 
@@ -172,26 +173,77 @@ const AdminPage = () => {
     setNuggetForm((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleCategoryChange = (event) => {
+    const { name, value } = event.target;
+    setCategoryForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleWelcomeChange = (event) => {
+    const { name, value } = event.target;
+    setWelcomeForm((prev) => ({ ...prev, [name]: value }));
+  };
+
   const handleMediaModeChange = (event) => {
     const mode = event.target.value;
     setMediaInputMode(mode);
 
-    if (mode === 'link') {
-      return;
+    if (mode === 'upload') {
+      setNuggetForm((prev) => ({ ...prev, mediaUrl: '' }));
     }
-
-    setNuggetForm((prev) => ({ ...prev, mediaUrl: '' }));
   };
 
-  const handleMediaFileUpload = (event) => {
+  const uploadFile = async (file, type) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('type', type);
+
+    const response = await fetch(`${uploadBaseUrl}/upload`, {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error('Upload failed.');
+    }
+
+    const data = await response.json();
+    return data.path;
+  };
+
+  const handleMediaFileUpload = async (event) => {
     const file = event.target.files?.[0];
     if (!file) return;
 
-    const fileReader = new FileReader();
-    fileReader.onload = () => {
-      setNuggetForm((prev) => ({ ...prev, mediaUrl: String(fileReader.result || '') }));
-    };
-    fileReader.readAsDataURL(file);
+    try {
+      setSaving(true);
+      const path = await uploadFile(file, nuggetForm.type);
+      setNuggetForm((prev) => ({
+        ...prev,
+        mediaUrl: path,
+        thumbnail: nuggetForm.type === 'image' ? path : prev.thumbnail,
+      }));
+      setError('');
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleThumbnailUpload = async (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    try {
+      setSaving(true);
+      const path = await uploadFile(file, 'image');
+      setNuggetForm((prev) => ({ ...prev, thumbnail: path }));
+      setError('');
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setSaving(false);
+    }
   };
 
   const handleTextFileUpload = (event) => {
@@ -203,16 +255,6 @@ const AdminPage = () => {
       setNuggetForm((prev) => ({ ...prev, fullText: String(fileReader.result || '') }));
     };
     fileReader.readAsText(file);
-  };
-
-  const handleCategoryChange = (event) => {
-    const { name, value } = event.target;
-    setCategoryForm((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleWelcomeChange = (event) => {
-    const { name, value } = event.target;
-    setWelcomeForm((prev) => ({ ...prev, [name]: value }));
   };
 
   const startNuggetEdit = (nugget) => {
@@ -468,11 +510,6 @@ const AdminPage = () => {
                         </div>
                       )}
 
-                      <div className="mb-3">
-                        <label className="form-label">Doctor Note</label>
-                        <textarea name="doctorNote" className="form-control" rows="2" value={nuggetForm.doctorNote} onChange={handleNuggetChange} />
-                      </div>
-
                       {mediaInputMode === 'link' && (
                         <div className="mb-3">
                           <label className="form-label">Media URL</label>
@@ -505,14 +542,23 @@ const AdminPage = () => {
                             className="form-control"
                             onChange={handleMediaFileUpload}
                           />
-                          <div className="form-text">File is stored as a local data URL for demo use.</div>
+                          <div className="form-text">File is saved to /public/uploads and the path is stored in db.json.</div>
                         </div>
                       )}
 
-                      <div className="mb-3">
-                        <label className="form-label">Thumbnail URL</label>
-                        <input name="thumbnail" className="form-control" value={nuggetForm.thumbnail} onChange={handleNuggetChange} />
-                      </div>
+                      {mediaInputMode === 'upload' && (nuggetForm.type === 'video' || nuggetForm.type === 'audio') && (
+                        <div className="mb-3">
+                          <label className="form-label">Upload Thumbnail (optional)</label>
+                          <input type="file" accept="image/*" className="form-control" onChange={handleThumbnailUpload} />
+                        </div>
+                      )}
+
+                      {mediaInputMode === 'link' && (
+                        <div className="mb-3">
+                          <label className="form-label">Thumbnail URL</label>
+                          <input name="thumbnail" className="form-control" value={nuggetForm.thumbnail} onChange={handleNuggetChange} />
+                        </div>
+                      )}
 
                       <div className="row g-3 mb-3">
                         <div className="col-6">

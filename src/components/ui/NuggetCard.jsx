@@ -6,6 +6,8 @@ const NuggetCard = ({ nugget }) => {
   const { id, title, category, type, thumbnail, description, doctorNote, datePosted } = nugget;
 
   const typeLabel = (type || 'unknown').toUpperCase();
+  const shareUrl = typeof window !== 'undefined' ? `${window.location.origin}/nuggets/${id}` : '';
+  const shareHref = shareUrl ? `https://wa.me/?text=${encodeURIComponent(`${title} - ${shareUrl}`)}` : '';
 
   return (
     <article className="card nugget-card bg-white">
@@ -35,7 +37,19 @@ const NuggetCard = ({ nugget }) => {
 
         <div className="d-flex justify-content-between align-items-center mt-auto">
           <p className="text-secondary small mb-0">{formatDate(datePosted)}</p>
-          <Link to={`/nuggets/${id}`} className="btn btn-sm btn-success">View details</Link>
+          <div className="d-flex gap-2">
+            {shareHref && (
+              <a
+                className="btn btn-sm btn-outline-success"
+                href={shareHref}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Share WhatsApp
+              </a>
+            )}
+            <Link to={`/nuggets/${id}`} className="btn btn-sm btn-success">View details</Link>
+          </div>
         </div>
       </div>
     </article>

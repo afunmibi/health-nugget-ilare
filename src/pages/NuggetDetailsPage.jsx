@@ -27,9 +27,21 @@ const NuggetDetailsPage = () => {
     load();
   }, [id]);
 
+  const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
+  const shareHref = nugget
+    ? `https://wa.me/?text=${encodeURIComponent(`${nugget.title} - ${shareUrl}`)}`
+    : '';
+
   return (
     <div className="container">
-      <Link to="/nuggets" className="btn btn-outline-success btn-sm mb-3">Back to Nuggets</Link>
+      <div className="d-flex flex-wrap gap-2 align-items-center mb-3">
+        <Link to="/nuggets" className="btn btn-outline-success btn-sm">Back to Nuggets</Link>
+        {shareHref && (
+          <a className="btn btn-outline-success btn-sm" href={shareHref} target="_blank" rel="noreferrer">
+            Share on WhatsApp
+          </a>
+        )}
+      </div>
 
       {loading && <LoadingSpinner />}
 

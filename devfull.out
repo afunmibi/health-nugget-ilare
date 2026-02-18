@@ -42,3 +42,5 @@
 [1] 
 [1]   [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5177[22m/[39m
 [1] [2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[1] ^C^C
+[1] npm run dev exited with code 3221225786
